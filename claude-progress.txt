@@ -18,3 +18,4 @@
 [2026-05-14] 按比赛方英文语境确认演示视频使用英文；安装并使用 HyperFrames skill、Chrome Headless、FFmpeg 和本地 TTS，生成 75 秒英文演示 MP4。新增 video/pou-demo-video 工程、DESIGN/SCRIPT/STORYBOARD、旁白音频、抽帧截图和 HYPERFRAMES_DEMO_VIDEO_WORKFLOW.md。当前剩余协作：公开 GitHub、部署 Project Homepage URL、上传视频并登录提交页。
 [2026-05-14] 确认 GitHub Pages 可作为零成本部署路线：将 Python harness v0 逻辑移植为纯前端静态 live demo，新增 site/ 页面、样例、视频资产和 .github/workflows/pages.yml。目标 Project Homepage URL 为 GitHub Pages 免费域名，无需自购域名或服务器。
 [2026-05-14] 回答并沉淀 GitHub Pages 可行性：Pages 不能运行 Streamlit/Python 后端，但可以托管本项目的纯前端 live demo；新增 GITHUB_PAGES_DEPLOYMENT.md，记录本地验证、创建仓库、推送 main、Actions 部署、查看 Pages URL 和后续更新流程。
+[2026-05-14] 创建公开 GitHub 仓库 fukangzhang/ai-opportunity-execution-harness，推送 main，并启用 GitHub Pages Actions 部署。线上 Project Homepage URL 已可访问：https://fukangzhang.github.io/ai-opportunity-execution-harness/ 。GitHub 仓库：https://github.com/fukangzhang/ai-opportunity-execution-harness 。

@@ -10,11 +10,11 @@ AI Opportunity Execution Harness helps independent builders and small teams deci
 
 ## Project Homepage URL
 
-待定：推荐使用 GitHub Pages 免费部署静态 live demo。目标格式：`https://fukangzhang.github.io/ai-opportunity-execution-harness/`。
+https://fukangzhang.github.io/ai-opportunity-execution-harness/
 
 ## GitHub Repository
 
-待定：推荐公开仓库 `https://github.com/fukangzhang/ai-opportunity-execution-harness`。
+https://github.com/fukangzhang/ai-opportunity-execution-harness
 
 ## Proof of Usefulness Evidence
 
@@ -30,11 +30,10 @@ AI Opportunity Execution Harness helps independent builders and small teams deci
 - 结构：Hook -> Problem -> Proof sample -> Microsoft counterexample -> Internal AI idea -> saved run log -> CTA。
 - 状态：已用 HyperFrames 生成英文旁白标准质量 MP4。
 - 本地视频：`video/pou-demo-video/renders/pou-demo-video.mp4`
-- 仍需：部署 URL 和 GitHub URL 确定后替换视频结尾占位，并上传到公开视频地址。
+- 公开视频地址：当前可直接使用 GitHub Pages 内嵌视频，也可后续上传到 YouTube/Loom 后替换。
 
 ## 下一步缺口
 
-- 部署 demo URL。
 - 增加 LLM 抽取模式。
-- 上传 75 秒演示视频到提交页可访问的位置。
+- 如提交表单要求单独视频 URL，则上传 75 秒演示视频到 YouTube/Loom 后补充。
 - 补一篇 HackerNoon 风格项目说明。

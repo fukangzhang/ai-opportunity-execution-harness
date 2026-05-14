@@ -14,6 +14,8 @@
 - [x] 编写提交材料草稿。
 - [x] 使用 HyperFrames 生成 75 秒英文演示视频草版。
 - [x] 生成视频流程、截图和原理说明文档。
+- [x] 部署 GitHub Pages 静态 live demo。
+- [x] 公开 GitHub 仓库。
 
 ## 我可以继续做
 
@@ -22,20 +24,18 @@
 - [ ] 写公开 README / HackerNoon 风格说明文。
 - [ ] 准备部署配置，例如 Streamlit Community Cloud / Hugging Face Spaces / Render。
 - [x] 准备 GitHub Pages 静态 live demo 配置。
-- [ ] 准备 GitHub README、截图和视频占位。
+- [ ] 准备 GitHub README 最终包装文案。
 
 ## 需要用户协作
 
-- [ ] 确认是否公开 GitHub 仓库。
-- [ ] 确认部署平台，并在需要时登录。
+- [x] 确认并公开 GitHub 仓库。
+- [x] 确认部署平台：GitHub Pages。
 - [x] 确认旁白语言：英文。
 - [x] 使用合成旁白生成本地视频草版。
 - [ ] 最终提交前登录 Proof of Usefulness 提交页。
 
 ## 当前推荐下一步
 
-1. 先推公开 GitHub 仓库或确认已有仓库地址。
-2. 部署 GitHub Pages 静态 live demo，拿到 Project Homepage URL。
-3. 上传 75 秒视频并拿到公开链接。
-4. 写 HackerNoon 风格项目说明。
-5. 登录提交页填写材料。
+1. 写 HackerNoon 风格项目说明。
+2. 如提交表单要求单独视频 URL，则上传 75 秒视频并拿到公开链接。
+3. 登录提交页填写材料。

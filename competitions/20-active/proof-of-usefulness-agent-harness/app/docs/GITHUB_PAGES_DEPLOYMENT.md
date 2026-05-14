@@ -40,6 +40,11 @@ https://<github-user>.github.io/<repository-name>/
 https://fukangzhang.github.io/ai-opportunity-execution-harness/
 ```
 
+当前已部署成功：
+
+- Project Homepage URL: https://fukangzhang.github.io/ai-opportunity-execution-harness/
+- GitHub Repository: https://github.com/fukangzhang/ai-opportunity-execution-harness
+
 不买域名也可以用。自定义域名只是可选项，不是比赛提交的必要条件。
 
 ## 当前仓库结构
