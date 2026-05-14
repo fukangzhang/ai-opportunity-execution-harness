@@ -16,10 +16,15 @@
 
 推荐赛源：
 
-- Microsoft Agent Academy Hackathon。
+- Proof of Usefulness: Tech & AI Hackathon。
+- Google Cloud Rapid Agent Hackathon。
 - 科大讯飞 AI 开发者大赛。
 - 华为云杯人工智能 OPC 应用创新大赛。
 - 第二届综合交通运输大模型智能体创新应用大赛。
+
+参考但不主攻：
+
+- Microsoft Agent Academy Hackathon：Agent 材料和评分项可参考，但至少要求使用一个 Microsoft 产品，偏低代码/企业生态展示，不作为第一主线。
 
 主攻策略：
 

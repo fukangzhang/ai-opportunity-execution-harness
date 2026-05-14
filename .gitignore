@@ -7,11 +7,15 @@ venv/
 node_modules/
 dist/
 build/
+.agents/
+skills-lock.json
 
 # 本地产物
 .env
 .env.*
 *.log
+.waveform-cache/
+**/renders/*-draft.mp4
 
 # 比赛输出
 **/data/raw/

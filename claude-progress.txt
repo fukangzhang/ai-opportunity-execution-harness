@@ -9,3 +9,12 @@
 [2026-05-14] 盘点当前仓库状态：调研/索引/规则/校验脚本基本完成，尚未确定第一个 active 比赛，生命周期目录仍未落具体比赛工作区；发现 CSV 缺少显式资格字段、校验脚本未校验资格枚举。
 [2026-05-14] 初始化 Git 仓库；为比赛矩阵补充显式 eligibility 字段并加强校验；创建 Agent Academy Hackathon 与 Kaggle F1 Pit Stops 两个 active 工作区，准备后续用独立 worktree 并行推进。
 [2026-05-14] 将多比赛并行的 Git worktree 规则写入工作流，并新增 scripts/new-competition-worktree.ps1，用于后续自动创建比赛分支、worktree 和 active 目录骨架。
+[2026-05-14] 重新评估 Agent Academy Hackathon：因强依赖 Microsoft/Copilot Studio 生态，不再作为主线 active；从 main 新建 competition/proof-of-usefulness-agent-harness worktree，转向开放、code-first 的 Agent/RAG 实用产品项目。
+[2026-05-14] 记录 Agent Academy 排除原因：平台生态重心过度依赖 Microsoft Copilot Studio / M365，后续筛选 sponsor technology 比赛时先判断是否会实质锁定作品形态。旧的 D:\project\ai-competition-research-agent-academy 已是 Git 外空目录，但仍被当前应用占用；关闭旧工作区/会话后可删除空壳。
+[2026-05-14] 已结束旧 Agent Academy 工作区残留进程，并删除空目录 D:\project\ai-competition-research-agent-academy。
+[2026-05-14] 核验 Proof of Usefulness 奖励与提交页：$20k cash、$130k+ software credits、$150k+ prize pool；提交第 1 步需要项目 URL、项目名和 1-3 句简介。新增比赛专属 app v0：schema、3 个样例、Markdown->JSON CLI 和运行日志。
+[2026-05-14] 将产品定位从“比赛调研助手”扩展为“AI 机会可行性与执行助手”；新增 Streamlit UI、Internal RAG Support Bot 非比赛样例、截图、用户操作流程文档、原理说明和 Proof of Usefulness 提交草稿。本地 demo 运行在 http://127.0.0.1:8502。
+[2026-05-14] 调研 demo video 最佳实践：采用 75 秒主视频 + 3 分钟扩展版；新增 DEMO_VIDEO_SCRIPT.md 与 RECORDING_CHECKLIST.md，并把视频结构写入提交草稿。当前需要用户协作的事项：确认公开 GitHub/部署平台/旁白语言，然后录制和上传视频。
+[2026-05-14] 按比赛方英文语境确认演示视频使用英文；安装并使用 HyperFrames skill、Chrome Headless、FFmpeg 和本地 TTS，生成 75 秒英文演示 MP4。新增 video/pou-demo-video 工程、DESIGN/SCRIPT/STORYBOARD、旁白音频、抽帧截图和 HYPERFRAMES_DEMO_VIDEO_WORKFLOW.md。当前剩余协作：公开 GitHub、部署 Project Homepage URL、上传视频并登录提交页。
+[2026-05-14] 确认 GitHub Pages 可作为零成本部署路线：将 Python harness v0 逻辑移植为纯前端静态 live demo，新增 site/ 页面、样例、视频资产和 .github/workflows/pages.yml。目标 Project Homepage URL 为 GitHub Pages 免费域名，无需自购域名或服务器。
+[2026-05-14] 回答并沉淀 GitHub Pages 可行性：Pages 不能运行 Streamlit/Python 后端，但可以托管本项目的纯前端 live demo；新增 GITHUB_PAGES_DEPLOYMENT.md，记录本地验证、创建仓库、推送 main、Actions 部署、查看 Pages URL 和后续更新流程。

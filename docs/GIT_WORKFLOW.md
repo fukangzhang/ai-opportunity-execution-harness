@@ -20,9 +20,9 @@
 示例：
 
 ```plain
-feat/agent-academy-workspace
+feat/proof-of-usefulness-workspace
 research/iflytek-2026-tracks
-competition/agent-academy-hackathon
+competition/proof-of-usefulness-agent-harness
 fix/eligibility-labels
 docs/harness-rules
 ```
@@ -41,8 +41,8 @@ docs/harness-rules
 D:\project\ai-competition-research
   main 分支，主线和稳定总账
 
-D:\project\ai-competition-research-agent-academy
-  competition/agent-academy-hackathon 分支，Agent 比赛施工现场
+D:\project\ai-competition-research-proof-of-usefulness-agent-harness
+  competition/proof-of-usefulness-agent-harness 分支，开放 Agent/RAG 项目施工现场
 
 D:\project\ai-competition-research-f1-pit-stops
   competition/kaggle-f1-pit-stops 分支，F1 比赛施工现场
@@ -61,7 +61,7 @@ D:\project\ai-competition-research-f1-pit-stops
 
 | 比赛 | 分支 | 工作目录 | 主要修改范围 |
 |---|---|---|---|
-| Agent Academy Hackathon | `competition/agent-academy-hackathon` | `D:\project\ai-competition-research-agent-academy` | `competitions/20-active/microsoft-agent-academy-hackathon/` |
+| Proof of Usefulness Agent Harness | `competition/proof-of-usefulness-agent-harness` | `D:\project\ai-competition-research-proof-of-usefulness-agent-harness` | `competitions/20-active/proof-of-usefulness-agent-harness/` |
 | Predicting F1 Pit Stops | `competition/kaggle-f1-pit-stops` | `D:\project\ai-competition-research-f1-pit-stops` | `competitions/20-active/kaggle-f1-pit-stops/` |
 
 边界规则：
@@ -92,10 +92,10 @@ pwsh scripts/new-competition-worktree.ps1 `
 
 ```powershell
 pwsh scripts/new-competition-worktree.ps1 `
-  -Slug agent-academy-hackathon `
-  -Branch competition/agent-academy-hackathon `
-  -WorktreePath D:\project\ai-competition-research-agent-academy `
-  -CompetitionPath competitions/20-active/microsoft-agent-academy-hackathon `
+  -Slug proof-of-usefulness-agent-harness `
+  -Branch competition/proof-of-usefulness-agent-harness `
+  -WorktreePath D:\project\ai-competition-research-proof-of-usefulness-agent-harness `
+  -CompetitionPath competitions/20-active/proof-of-usefulness-agent-harness `
   -CreateActiveDirectory
 ```
 
@@ -132,7 +132,7 @@ git push origin --delete competition/<platform-competition-slug>
 使用 Conventional Commits 风格：
 
 ```plain
-feat: add agent academy competition workspace
+feat: add proof of usefulness competition workspace
 fix: correct student-only eligibility label
 docs: add PowerShell 7 environment rules
 chore: regenerate competition markdown index

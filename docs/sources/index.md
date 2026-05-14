@@ -6,6 +6,8 @@
 
 - Kaggle Active Competitions：https://www.kaggle.com/competitions?listOption=active&sortOption=newest  
   浏览器观察到的当前活跃项包括：Gemma 4 Good Hackathon、5-Day AI Agents、NVIDIA Nemotron、ARC Prize 2026、BirdCLEF+ 2026、CAFA 6、Hull Tactical、LLM Classification、Store Sales、Predicting F1 Pit Stops 等。
+- Proof of Usefulness: Tech & AI Hackathon：https://www.proofofusefulness.com/
+- Google Cloud Rapid Agent Hackathon：https://info.devpost.com/blog/google-cloud-rapid-agent-hackathon
 - Microsoft Agent Academy Hackathon：https://microsoft.github.io/agent-academy/events/hackathon/
 - Vercel Zero to Agent：https://community.vercel.com/hackathons/zero-to-agent
 - DrivenData Competition Search：https://www.drivendata.org/competitions/search/

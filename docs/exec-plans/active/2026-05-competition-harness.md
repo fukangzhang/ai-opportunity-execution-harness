@@ -25,5 +25,5 @@
 ## 待确认问题
 
 - 短截止比赛是否默认优先做应用原型，而不是 leaderboard 算法赛。
-- 第一个 active 目标已选择 Microsoft Agent Academy Hackathon。
+- 第一个 active 目标已从 Microsoft Agent Academy Hackathon 调整为 Proof of Usefulness Agent Harness，避免低代码平台生态绑定。
 - 第二 active 目标已选择 Kaggle Predicting F1 Pit Stops，定位为轻量算法 baseline 和提交练习。

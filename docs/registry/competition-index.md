@@ -1,6 +1,6 @@
 # 比赛索引
 
-由 `competition_matrix.csv` 于 2026-05-14 09:56:37 +08:00 生成。
+由 `competition_matrix.csv` 于 2026-05-14 10:38:31 +08:00 生成。
 
 参赛资格采用保守判断；官方规则始终优先于本索引。
 
@@ -8,7 +8,7 @@
 
 | 比赛 | 平台 | 类型 | 状态 / 时间 | 8GB | 资格 | 建议 | 来源 |
 |---|---|---|---|---|---|---|---|
-| Agent Academy Hackathon | Microsoft Agent Academy | AI Agent 应用赛 | 报名/提交期内; 2026-05-12 to 2026-06-02 | B | 开放参赛 | 主线 active | [链接](https://microsoft.github.io/agent-academy/events/hackathon/) |
+| Proof of Usefulness: Tech & AI Hackathon | HackerNoon | AI Agent / RAG / 实用产品赛 | 滚动提交期内; 2026-01-05 to 2026-06-05 | B | 开放参赛 | 主线 active | [链接](https://www.proofofusefulness.com/) |
 | 5-Day AI Agents: Intensive Vibe Coding Course With Google | Kaggle | AI Agent 学习/作品赛 | 未开始; 2026-06-15 to 2026-06-19 | B | 未知 | 练手/预备赛 | [链接](https://www.kaggle.com/competitions/5-day-ai-agents-intensive-vibecoding-course-with-google) |
 | The Gemma 4 Good Hackathon | Kaggle | 大模型应用 Hackathon | 临近截止; 约 2026-05-19 | C | 开放参赛 | 只适合快速冲刺 | [链接](https://www.kaggle.com/competitions/gemma-4-good-hackathon) |
 
@@ -16,6 +16,7 @@
 
 | 比赛 | 平台 | 类型 | 状态 / 时间 | 8GB | 资格 | 建议 | 来源 |
 |---|---|---|---|---|---|---|---|
+| Google Cloud Rapid Agent Hackathon | Devpost / Google Cloud | AI Agent / MCP 应用赛 | 提交期内; 2026-05-05 to 2026-06-11 | B/C | 开放参赛 | 备选提交目标 | [链接](https://info.devpost.com/blog/google-cloud-rapid-agent-hackathon) |
 | 2026 大疆机载 AI 行业应用创新挑战大赛 | DJI Developer | 行业 AI 应用赛 | 提交期内; 提交方案截止 2026-05-31 | C | 开放参赛 | 备选主攻 | [链接](https://developer.dji.com/cn/innovation-contest/) |
 | 2026数字中国创新大赛·数据应用赛道 | 数字中国创新大赛 | 算法+应用赛 | 需进一步确认具体赛题报名状态; 2026-02-05 发布 | B/C | 未知 | 重点跟踪 | [链接](https://www.szzg.gov.cn/2025/xwzx/qwfb/202602/t20260205_5281789.htm) |
 | 2026数字中国创新大赛·数字智造AI应用创新赛 | 数字中国创新大赛 | 制造业 AI 应用赛 | 本轮报名已过; 报名/提交截至 2026-04-15 | B | 未知 | 复盘并跟踪下一届 | [链接](https://www.szzg.gov.cn/2025/xwzx/szkx/202603/t20260317_5296624.htm) |
@@ -62,6 +63,7 @@
 
 | 比赛 | 平台 | 类型 | 状态 / 时间 | 8GB | 资格 | 建议 | 来源 |
 |---|---|---|---|---|---|---|---|
+| Agent Academy Hackathon | Microsoft Agent Academy | AI Agent 应用赛 | 报名/提交期内; 2026-05-12 to 2026-06-02 | B | 开放参赛 | 仅参考，不再 active | [链接](https://microsoft.github.io/agent-academy/events/hackathon/) |
 | Zero to Agent | Vercel | AI Agent Hackathon | 已结束; 2026-04-24 to 2026-05-04 | B | 未知 | 参考作品和赛道设计 | [链接](https://community.vercel.com/hackathons/zero-to-agent) |
 
 ## 8GB 标签说明

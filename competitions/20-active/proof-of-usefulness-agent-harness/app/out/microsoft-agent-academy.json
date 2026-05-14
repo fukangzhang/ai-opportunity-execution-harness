@@ -1,0 +1,24 @@
+{
+  "name": "Microsoft Agent Academy Hackathon",
+  "source_url": "https://microsoft.github.io/agent-academy/events/hackathon/",
+  "eligibility": "开放参赛",
+  "deadline_or_window": "2026-05-12 to 2026-06-02",
+  "fit_8gb": "B API/云端",
+  "recommendation": "reference",
+  "risks": [
+    "生态绑定较强，复用价值低，默认只作反例或参考。"
+  ],
+  "next_48h_plan": [
+    "保留来源和排除原因。",
+    "抽取可借鉴的评分项和材料结构。",
+    "验证系统能识别生态绑定风险并降级处理。"
+  ],
+  "evidence": [
+    "L3: Source: https://microsoft.github.io/agent-academy/events/hackathon/",
+    "L5: Window: 2026-05-12 to 2026-06-02.",
+    "L7: Open to everyone except Microsoft employees and immediate family members.",
+    "L9: The official material requires at least one Microsoft product. The practical center of gravity is Microsoft Copilot Studio, M365, and Microsoft low-code workflows.",
+    "L11: Local constraint: Windows, 8GB GPU. API/cloud is feasible, but the project would become platform-config heavy instead of code-first.",
+    "L13: Decision note: Use as reference only. Do not make it active because single-ecosystem lock-in reduces reuse value."
+  ]
+}

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Opportunity Execution Harness</title>
+    <meta
+      name="description"
+      content="A browser-based harness for turning AI opportunity briefs into feasibility cards, evidence lines, and 48-hour execution plans."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Proof of Usefulness submission</p>
+        <h1>AI Opportunity Execution Harness</h1>
+      </div>
+      <nav aria-label="Project links">
+        <a href="#demo">Live demo</a>
+        <a href="#video">Video</a>
+        <a href="https://github.com/fukangzhang/ai-opportunity-execution-harness" id="repo-link">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Define the evidence before you build</p>
+          <h2>Stop choosing AI projects by vibe.</h2>
+          <p>
+            Paste a hackathon brief, bounty, competition rule page, or internal AI idea. The harness returns a
+            structured feasibility card with eligibility, 8GB Windows fit, risks, evidence lines, and a 48-hour plan.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#demo">Try the demo</a>
+            <a class="button" href="#video">Watch 75-second video</a>
+          </div>
+        </div>
+        <div class="proof-panel" aria-label="Project proof points">
+          <div>
+            <strong>4</strong>
+            <span>sample opportunities</span>
+          </div>
+          <div>
+            <strong>0</strong>
+            <span>server cost</span>
+          </div>
+          <div>
+            <strong>48h</strong>
+            <span>execution plan</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="video">
+        <div class="section-heading">
+          <p class="eyebrow">Demo video</p>
+          <h2>Built for HackerNoon’s English-first judging context.</h2>
+        </div>
+        <video controls preload="metadata" poster="assets/proof-analysis.png">
+          <source src="assets/pou-demo-video.mp4" type="video/mp4" />
+        </video>
+      </section>
+
+      <section class="demo-grid" id="demo">
+        <div class="input-panel">
+          <div class="section-heading compact">
+            <p class="eyebrow">Live browser demo</p>
+            <h2>Opportunity brief in, decision card out.</h2>
+          </div>
+          <label for="sample-select">Sample brief</label>
+          <select id="sample-select">
+            <option value="proof-of-usefulness.md">Proof of Usefulness</option>
+            <option value="microsoft-agent-academy.md">Microsoft Agent Academy counterexample</option>
+            <option value="kaggle-f1-pit-stops.md">Kaggle F1 Pit Stops</option>
+            <option value="internal-rag-support-bot.md">Internal RAG Support Bot</option>
+          </select>
+          <label for="brief-input">Brief markdown</label>
+          <textarea id="brief-input" spellcheck="false"></textarea>
+          <div class="button-row">
+            <button id="analyze-button" class="button primary" type="button">Analyze</button>
+            <button id="download-button" class="button" type="button">Download JSON</button>
+          </div>
+        </div>
+
+        <div class="output-panel" aria-live="polite">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Recommendation</p>
+              <h2 id="card-name">Loading sample...</h2>
+            </div>
+            <span id="recommendation" class="pill">pending</span>
+          </div>
+
+          <div class="facts">
+            <div>
+              <span>Eligibility</span>
+              <strong id="eligibility">-</strong>
+            </div>
+            <div>
+              <span>8GB fit</span>
+              <strong id="fit">-</strong>
+            </div>
+            <div>
+              <span>Window</span>
+              <strong id="window">-</strong>
+            </div>
+          </div>
+
+          <div class="split">
+            <article>
+              <h3>Risks</h3>
+              <ul id="risks"></ul>
+            </article>
+            <article>
+              <h3>Next 48 hours</h3>
+              <ol id="plan"></ol>
+            </article>
+          </div>
+
+          <article class="evidence-box">
+            <h3>Evidence lines</h3>
+            <ul id="evidence"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="section-heading">
+          <p class="eyebrow">What this proves</p>
+          <h2>The project already made a real decision.</h2>
+        </div>
+        <div class="proof-grid">
+          <article>
+            <h3>Selected the right target</h3>
+            <p>Proof of Usefulness became the active competition because it is open, code-first, and aligned with useful AI tools.</p>
+          </article>
+          <article>
+            <h3>Avoided platform lock-in</h3>
+            <p>Microsoft Agent Academy was downgraded because the work would center on Copilot Studio and M365 instead of reusable code.</p>
+          </article>
+          <article>
+            <h3>Generalized beyond contests</h3>
+            <p>The same card evaluates internal AI ideas, such as a RAG support bot, before a team commits build time.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>AI Opportunity Execution Harness</span>
+      <span>Markdown to schema to auditable run log</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

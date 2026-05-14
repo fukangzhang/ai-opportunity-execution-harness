@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/proof-of-usefulness/competition-card.schema.json",
+  "title": "OpportunityExecutionCard",
+  "type": "object",
+  "required": [
+    "name",
+    "source_url",
+    "eligibility",
+    "deadline_or_window",
+    "fit_8gb",
+    "recommendation",
+    "risks",
+    "next_48h_plan"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "eligibility": {
+      "type": "string",
+      "enum": ["开放参赛", "企业/组织限定", "邀请制", "未知"]
+    },
+    "deadline_or_window": {
+      "type": "string"
+    },
+    "fit_8gb": {
+      "type": "string",
+      "enum": ["A 本地可做", "B API/云端", "C 平台 Notebook", "D 不建议主攻"]
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": ["active", "candidate", "watchlist", "rejected", "reference"]
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_48h_plan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

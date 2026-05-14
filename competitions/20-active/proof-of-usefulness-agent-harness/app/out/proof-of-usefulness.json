@@ -1,0 +1,24 @@
+{
+  "name": "Proof of Usefulness: Tech & AI Hackathon",
+  "source_url": "https://www.proofofusefulness.com/",
+  "eligibility": "开放参赛",
+  "deadline_or_window": "January 5th - June 5th, 2026",
+  "fit_8gb": "B API/云端",
+  "recommendation": "active",
+  "risks": [
+    "大奖可能偏向 sponsor technologies，需要避免核心架构被赞助商生态锁死。",
+    "提交前必须准备 live URL、公开代码仓库和可验证的使用证据。"
+  ],
+  "next_48h_plan": [
+    "整理官方规则证据，确认资格、截止时间、交付字段。",
+    "定义最小数据 schema，并准备 3 个真实比赛样例。",
+    "实现 Markdown 输入到结构化比赛卡片的本地闭环。",
+    "记录人工复核点和失败样例，为 PoU 证据做准备。"
+  ],
+  "evidence": [
+    "L3: Source: https://www.proofofusefulness.com/",
+    "L5: Rolling Submissions: January 5th - June 5th, 2026.",
+    "L13: Submission requires live project URL, GitHub repo, integrated tech stack, PoU report, and HackerNoon project documentation.",
+    "L15: Local constraint: Windows, 8GB GPU. Prefer API/cloud for models and local code for orchestration."
+  ]
+}

@@ -37,10 +37,10 @@ GitHub 工作流见 [docs/GIT_WORKFLOW.md](D:/project/ai-competition-research/do
 
 ## 当前第一梯队候选
 
-1. Microsoft Agent Academy Hackathon：2026-05-12 到 2026-06-02，做真实可工作的 Agent，8GB 环境友好，适合应用方向。
-2. 大疆机载 AI 行业应用创新挑战大赛：方案提交截止 2026-05-31，偏行业应用和边缘智能，适合做“方案 + 可运行 demo”，但硬件和行业理解门槛较高。
-3. Kaggle 5-Day AI Agents: Intensive Vibe Coding Course With Google：2026-06-15 到 2026-06-19，偏学习和作品提交，适合作为快速练手。
-4. Kaggle Gemma 4 Good Hackathon：截至调研日在 Kaggle 显示约 5 天后截止，奖金高、方向好，但时间很紧，只适合快速做一个社会价值应用原型。
+1. Proof of Usefulness: Tech & AI Hackathon：2026-01-05 到 2026-06-05 滚动提交，技术栈开放，适合做真实有用的 Agent/RAG 工程项目。
+2. Google Cloud Rapid Agent Hackathon：2026-05-05 到 2026-06-11，偏 Gemini + Google Cloud + MCP，代码化程度较高但仍有生态绑定。
+3. 大疆机载 AI 行业应用创新挑战大赛：方案提交截止 2026-05-31，偏行业应用和边缘智能，适合做“方案 + 可运行 demo”，但硬件和行业理解门槛较高。
+4. Kaggle 5-Day AI Agents: Intensive Vibe Coding Course With Google：2026-06-15 到 2026-06-19，偏学习和作品提交，适合作为快速练手。
 
 新增重点跟踪：
 
@@ -52,7 +52,7 @@ GitHub 工作流见 [docs/GIT_WORKFLOW.md](D:/project/ai-competition-research/do
 
 ## 当前 active 工作区
 
-- [Microsoft Agent Academy Hackathon](D:/project/ai-competition-research/competitions/20-active/microsoft-agent-academy-hackathon/README.md)：主线 AI Agent 应用赛。
+- [Proof of Usefulness Agent Harness](D:/project/ai-competition-research-proof-of-usefulness-agent-harness/competitions/20-active/proof-of-usefulness-agent-harness/README.md)：主线开放 Agent/RAG 实用产品。
 - [Kaggle Predicting F1 Pit Stops](D:/project/ai-competition-research/competitions/20-active/kaggle-f1-pit-stops/README.md)：第二线轻量算法 baseline 和提交练习。
 
 ## 算法赛优先策略

@@ -1,0 +1,23 @@
+{
+  "name": "Internal RAG Support Bot MVP",
+  "source_url": "https://example.com/internal-ai-idea",
+  "eligibility": "未知",
+  "deadline_or_window": "2-week internal MVP sprint",
+  "fit_8gb": "B API/云端",
+  "recommendation": "candidate",
+  "risks": [
+    "提交前需要复核完整官方规则、资格和交付物。"
+  ],
+  "next_48h_plan": [
+    "补齐资格、截止时间、来源和 8GB 可行性。",
+    "决定进入 candidate、watchlist 或 rejected。"
+  ],
+  "evidence": [
+    "L3: Source: https://example.com/internal-ai-idea",
+    "L5: Window: 2-week internal MVP sprint.",
+    "L7: Audience: a small operations team that loses time searching policy, onboarding, and troubleshooting documents.",
+    "L11: Local constraint: Windows, 8GB GPU. Use API/cloud LLM calls and local SQLite/vector index for orchestration.",
+    "L13: Submission requires a working demo, 10 real support questions, before/after response comparison, and a short rollout risk note.",
+    "L15: Decision note: Candidate opportunity. Useful if the team can provide real documents and a reviewer for answer quality."
+  ]
+}

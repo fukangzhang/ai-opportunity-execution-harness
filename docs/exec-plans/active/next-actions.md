@@ -4,7 +4,7 @@
 
 ## 已确认的推进方式
 
-- 主线 active：Microsoft Agent Academy Hackathon。
+- 主线 active：Proof of Usefulness Agent Harness。
 - 第二 active：Kaggle Predicting F1 Pit Stops，定位为轻量算法 baseline 和提交练习。
 - 并行方式：每个比赛使用独立 Git 分支和独立 worktree，避免两个 Codex 对话框在同一个工作区反复切分支。
 
@@ -24,7 +24,8 @@
 
 最适合的候选：
 
-- Microsoft Agent Academy Hackathon：2026-05-12 到 2026-06-02。
+- Proof of Usefulness: Tech & AI Hackathon：滚动提交到 2026-06-05，技术栈开放，适合主线 code-first Agent/RAG 项目。
+- Google Cloud Rapid Agent Hackathon：2026-05-05 到 2026-06-11，适合作为偏 MCP/云端的备选提交目标。
 - Kaggle 5-Day AI Agents：2026-06-15 到 2026-06-19，适合练手。
 - DJI 机载 AI 行业应用挑战：提交方案截止 2026-05-31，适合方案+demo。
 
@@ -58,8 +59,8 @@
 
 | 日期 | 动作 | 产出 |
 |---|---|---|
-| 2026-05-14 | 确认资格和主攻方向 | 已选择 Agent Academy + F1 Pit Stops |
-| 2026-05-15 | 建应用赛模板仓库 | 可运行 RAG/Agent demo |
+| 2026-05-14 | 确认资格和主攻方向 | 已调整为 Proof of Usefulness + F1 Pit Stops |
+| 2026-05-15 | 建开放 Agent/RAG 项目骨架 | 可运行 RAG/Agent demo |
 | 2026-05-16 | 选题调研和数据准备 | 需求文档 + 数据/知识库 |
 | 2026-05-17 | 做第一版可演示产品 | demo v0.1 |
 | 2026-05-18 | 完善评测、演示脚本、README | 可提交材料草稿 |

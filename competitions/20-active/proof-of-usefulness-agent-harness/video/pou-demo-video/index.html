@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #eef4ef;
+        color: #16201b;
+        font-family: Montserrat, sans-serif;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #eef4ef;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(225, 84, 63, 0.18), rgba(225, 84, 63, 0) 28%),
+          radial-gradient(circle at 12% 84%, rgba(30, 111, 84, 0.2), rgba(30, 111, 84, 0) 34%),
+          linear-gradient(135deg, #eef4ef 0%, #f8fbf6 100%);
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .scene-content {
+        position: relative;
+        z-index: 3;
+        display: grid;
+        width: 100%;
+        height: 100%;
+        padding: 86px 104px;
+        gap: 44px;
+      }
+
+      .grain {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-image:
+          linear-gradient(rgba(22, 32, 27, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(22, 32, 27, 0.04) 1px, transparent 1px);
+        background-size: 72px 72px;
+        opacity: 0.6;
+      }
+
+      .ghost {
+        position: absolute;
+        z-index: 2;
+        color: rgba(22, 32, 27, 0.1);
+        font-family: Georgia, Times New Roman, serif;
+        font-size: 184px;
+        font-weight: 700;
+        line-height: 0.92;
+        max-width: 1180px;
+        pointer-events: none;
+      }
+
+      .ghost::before {
+        content: attr(data-label);
+      }
+
+      .orb {
+        position: absolute;
+        z-index: 2;
+        width: 360px;
+        height: 360px;
+        border: 3px solid rgba(30, 111, 84, 0.32);
+        border-radius: 50%;
+      }
+
+      .kicker,
+      .label,
+      .meta,
+      .mono,
+      .tag,
+      .caption {
+        font-family: Cascadia Mono, Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .kicker {
+        color: #1e6f54;
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        font-family: Georgia, Times New Roman, serif;
+        font-weight: 700;
+        line-height: 0.98;
+        color: #16201b;
+      }
+
+      h1 {
+        max-width: 1180px;
+        font-size: 112px;
+      }
+
+      h2 {
+        max-width: 980px;
+        font-size: 78px;
+      }
+
+      p {
+        max-width: 860px;
+        color: #2e3a34;
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.24;
+      }
+
+      .rule {
+        height: 4px;
+        width: 100%;
+        background: #16201b;
+        transform-origin: left center;
+      }
+
+      .accent-rule {
+        height: 5px;
+        width: 260px;
+        background: #e1543f;
+        transform-origin: left center;
+      }
+
+      .panel {
+        border: 3px solid rgba(22, 32, 27, 0.86);
+        background: rgba(248, 251, 246, 0.88);
+        box-shadow: 22px 24px 0 rgba(30, 111, 84, 0.16);
+      }
+
+      .small-panel {
+        padding: 32px;
+      }
+
+      .big-panel {
+        padding: 44px;
+      }
+
+      .stat {
+        display: grid;
+        gap: 8px;
+      }
+
+      .stat-value {
+        color: #1e6f54;
+        font-family: Georgia, Times New Roman, serif;
+        font-size: 86px;
+        font-weight: 700;
+        line-height: 0.94;
+      }
+
+      .stat-label {
+        color: #2e3a34;
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 46px;
+        border: 2px solid #16201b;
+        padding: 8px 18px;
+        background: #f8fbf6;
+        color: #16201b;
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .tag.good {
+        background: #dff0e7;
+        color: #1e6f54;
+      }
+
+      .tag.warn {
+        background: #ffe0d7;
+        color: #a53d2b;
+      }
+
+      .tag.blue {
+        background: #dfe8ff;
+        color: #315eaf;
+      }
+
+      .code-card {
+        display: grid;
+        gap: 18px;
+        padding: 32px;
+        background: #16201b;
+        color: #eef4ef;
+        box-shadow: 18px 18px 0 rgba(225, 84, 63, 0.18);
+      }
+
+      .code-line {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 24px;
+        font-family: Cascadia Mono, Consolas, monospace;
+        font-size: 27px;
+        line-height: 1.34;
+      }
+
+      .line-no {
+        color: #d9a429;
+      }
+
+      .image-frame {
+        position: relative;
+        overflow: hidden;
+        border: 4px solid #16201b;
+        background: #f8fbf6;
+        box-shadow: 24px 28px 0 rgba(49, 94, 175, 0.16);
+      }
+
+      .image-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .browser-bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        height: 54px;
+        border-bottom: 3px solid #16201b;
+        padding: 0 18px;
+        background: #dfe8ff;
+      }
+
+      .dot {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #e1543f;
+      }
+
+      .dot:nth-child(2) {
+        background: #d9a429;
+      }
+
+      .dot:nth-child(3) {
+        background: #1e6f54;
+      }
+
+      .caption {
+        position: absolute;
+        left: 104px;
+        right: 104px;
+        bottom: 64px;
+        z-index: 6;
+        min-height: 74px;
+        border: 3px solid #16201b;
+        padding: 18px 28px;
+        background: rgba(248, 251, 246, 0.96);
+        color: #16201b;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.18;
+        box-shadow: 10px 10px 0 rgba(22, 32, 27, 0.13);
+      }
+
+      .s1 .scene-content {
+        grid-template-columns: 1.1fr 0.7fr;
+        align-items: center;
+      }
+
+      .s1 .hero-copy {
+        display: grid;
+        gap: 28px;
+      }
+
+      .s1 .proof-stack {
+        display: grid;
+        gap: 26px;
+      }
+
+      .s2 .scene-content {
+        grid-template-columns: 0.82fr 1fr;
+        align-items: center;
+      }
+
+      .constraint-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .constraint {
+        min-height: 156px;
+        padding: 28px;
+        border: 3px solid #16201b;
+        background: #f8fbf6;
+      }
+
+      .constraint .label {
+        margin-bottom: 14px;
+        color: #e1543f;
+        font-size: 23px;
+        font-weight: 700;
+      }
+
+      .constraint strong {
+        display: block;
+        color: #16201b;
+        font-size: 34px;
+        line-height: 1.05;
+      }
+
+      .s3 .scene-content,
+      .s6 .scene-content {
+        grid-template-columns: 0.68fr 1.05fr;
+        align-items: center;
+      }
+
+      .workflow-copy {
+        display: grid;
+        gap: 26px;
+      }
+
+      .decision-card {
+        display: grid;
+        gap: 20px;
+        padding: 34px;
+      }
+
+      .decision-title {
+        color: #16201b;
+        font-family: Georgia, Times New Roman, serif;
+        font-size: 52px;
+        font-weight: 700;
+      }
+
+      .decision-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .decision-item {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 14px;
+        color: #2e3a34;
+        font-size: 27px;
+        line-height: 1.18;
+      }
+
+      .check {
+        color: #1e6f54;
+        font-family: Cascadia Mono, Consolas, monospace;
+        font-weight: 700;
+      }
+
+      .s4 .scene-content {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
+      .versus {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 34px;
+      }
+
+      .verdict {
+        min-height: 444px;
+        padding: 40px;
+      }
+
+      .verdict h3 {
+        margin-bottom: 24px;
+        color: #16201b;
+        font-family: Georgia, Times New Roman, serif;
+        font-size: 52px;
+        line-height: 1;
+      }
+
+      .verdict p {
+        max-width: 100%;
+        font-size: 31px;
+      }
+
+      .s5 .scene-content {
+        grid-template-columns: 0.9fr 1fr;
+        align-items: center;
+      }
+
+      .idea-flow {
+        display: grid;
+        gap: 22px;
+      }
+
+      .flow-step {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 22px;
+        align-items: center;
+        min-height: 114px;
+        padding: 22px;
+        border: 3px solid #16201b;
+        background: #f8fbf6;
+      }
+
+      .flow-index {
+        display: grid;
+        place-items: center;
+        width: 74px;
+        height: 74px;
+        background: #d9a429;
+        color: #16201b;
+        font-family: Georgia, Times New Roman, serif;
+        font-size: 42px;
+        font-weight: 700;
+      }
+
+      .flow-text {
+        color: #16201b;
+        font-size: 31px;
+        font-weight: 700;
+      }
+
+      .s7 .scene-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        align-items: center;
+        padding-bottom: 190px;
+      }
+
+      .cta-lockup {
+        display: grid;
+        gap: 32px;
+        max-width: 1280px;
+      }
+
+      .cta-lockup h2 {
+        max-width: 1280px;
+        font-size: 104px;
+      }
+
+      .url-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+      }
+
+      .url-box {
+        min-height: 126px;
+        padding: 28px;
+        border: 3px solid #16201b;
+        background: #f8fbf6;
+      }
+
+      .url-box .label {
+        color: #1e6f54;
+        font-size: 23px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .url-box .mono {
+        margin-top: 16px;
+        color: #16201b;
+        font-size: 29px;
+        line-height: 1.16;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="75"
+      data-width="1920"
+      data-height="1080"
+    >
+      <audio
+        id="narration"
+        class="clip"
+        data-start="0"
+        data-duration="75"
+        data-track-index="20"
+        src="assets/narration.wav"
+        data-volume="0.95"
+      ></audio>
+
+      <section id="scene-1" class="clip scene s1" data-start="0" data-duration="8.8" data-track-index="1">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="USEFUL BEFORE BUILDING" style="left: 76px; bottom: 58px"></div>
+        <div class="orb" style="right: 150px; top: 118px"></div>
+        <div class="scene-content">
+          <div class="hero-copy">
+            <div class="kicker">Proof of Usefulness demo</div>
+            <h1>Stop building the wrong AI project.</h1>
+            <div class="accent-rule"></div>
+            <p>AI Opportunity Execution Harness turns messy opportunity briefs into auditable build decisions.</p>
+          </div>
+          <div class="proof-stack">
+            <div class="panel big-panel stat">
+              <div class="stat-value">48h</div>
+              <div class="stat-label">action plan</div>
+            </div>
+            <div class="panel big-panel stat">
+              <div class="stat-value">8GB</div>
+              <div class="stat-label">Windows feasibility</div>
+            </div>
+            <div class="panel big-panel stat">
+              <div class="stat-value">evidence</div>
+              <div class="stat-label">before implementation</div>
+            </div>
+          </div>
+        </div>
+        <div class="caption">Before building an AI project, the expensive mistake is choosing the wrong opportunity.</div>
+      </section>
+
+      <section id="scene-2" class="clip scene s2" data-start="8" data-duration="12.8" data-track-index="2">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="HIDDEN CONSTRAINTS" style="right: 70px; top: 76px"></div>
+        <div class="orb" style="left: 122px; bottom: 118px"></div>
+        <div class="scene-content">
+          <div class="workflow-copy">
+            <div class="kicker">The real problem</div>
+            <h2>Opportunity pages hide the costly parts.</h2>
+            <p>Eligibility, deadlines, platform lock-in, hardware needs, and deliverables usually live in different paragraphs.</p>
+            <div class="rule"></div>
+          </div>
+          <div class="constraint-grid">
+            <div class="constraint">
+              <div class="label">Eligibility</div>
+              <strong>Open, limited, invited, or unclear?</strong>
+            </div>
+            <div class="constraint">
+              <div class="label">Deadline</div>
+              <strong>Enough time to ship, deploy, and document?</strong>
+            </div>
+            <div class="constraint">
+              <div class="label">Platform</div>
+              <strong>Reusable code or sponsor lock-in?</strong>
+            </div>
+            <div class="constraint">
+              <div class="label">Evidence</div>
+              <strong>Can we prove usefulness publicly?</strong>
+            </div>
+          </div>
+        </div>
+        <div class="caption">Hackathons, bounties, and internal AI ideas all hide important constraints.</div>
+      </section>
+
+      <section id="scene-3" class="clip scene s3" data-start="20" data-duration="14" data-track-index="3">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="STRUCTURED CARD" style="left: 82px; top: 90px"></div>
+        <div class="scene-content">
+          <div class="workflow-copy">
+            <div class="kicker">Workflow one</div>
+            <h2>Paste a real brief. Get a decision card.</h2>
+            <div class="panel decision-card">
+              <div class="decision-title">Proof of Usefulness</div>
+              <div class="tag-row">
+                <span class="tag good">active</span>
+                <span class="tag good">open to builders</span>
+                <span class="tag blue">API / cloud fit</span>
+              </div>
+              <div class="decision-list">
+                <div class="decision-item"><span class="check">+</span><span>Source-backed eligibility and deadline.</span></div>
+                <div class="decision-item"><span class="check">+</span><span>Risks and sponsor-tech caveats stay visible.</span></div>
+                <div class="decision-item"><span class="check">+</span><span>Next 48 hours become concrete work.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="image-frame" data-layout-allow-overflow>
+            <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <img src="assets/proof-analysis.png" alt="AI Opportunity Execution Harness analysis screen" />
+          </div>
+        </div>
+        <div class="caption">The harness extracts recommendation, eligibility, 8GB feasibility, risks, evidence, and a 48-hour plan.</div>
+      </section>
+
+      <section id="scene-4" class="clip scene s4" data-start="33.5" data-duration="11.8" data-track-index="4">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="BAD START PREVENTED" style="left: 96px; bottom: 80px"></div>
+        <div class="scene-content">
+          <div class="workflow-copy">
+            <div class="kicker">Workflow two</div>
+            <h2>It also catches the opportunity we should not mainline.</h2>
+            <p>Open to join is not enough. A project can still be a poor fit if the real architecture is tied to a closed workflow.</p>
+          </div>
+          <div class="versus" data-layout-allow-overflow>
+            <div class="panel verdict">
+              <h3>Looks open</h3>
+              <div class="tag-row">
+                <span class="tag good">open join</span>
+                <span class="tag">agent theme</span>
+              </div>
+              <p style="margin-top: 26px">At first glance, Microsoft Agent Academy looks like another AI agent opportunity.</p>
+            </div>
+            <div class="panel verdict">
+              <h3>But not reusable</h3>
+              <div class="tag-row">
+                <span class="tag warn">Copilot Studio</span>
+                <span class="tag warn">M365 lock-in</span>
+              </div>
+              <p style="margin-top: 26px">The harness marks it as reference, so we do not spend days building a platform-config demo.</p>
+            </div>
+          </div>
+        </div>
+        <div class="caption">A Microsoft Agent Academy sample is open to join, but the tool flags Copilot Studio and M365 lock-in.</div>
+      </section>
+
+      <section id="scene-5" class="clip scene s5" data-start="44.8" data-duration="10.6" data-track-index="5">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="BEYOND CONTESTS" style="right: 90px; bottom: 84px"></div>
+        <div class="orb" style="right: 186px; top: 130px"></div>
+        <div class="scene-content">
+          <div class="workflow-copy">
+            <div class="kicker">Workflow three</div>
+            <h2>The same filter works for internal AI ideas.</h2>
+            <p>An internal RAG support bot becomes a candidate only after documents, reviewers, and quality evidence are clear.</p>
+          </div>
+          <div class="idea-flow">
+            <div class="flow-step">
+              <div class="flow-index">1</div>
+              <div class="flow-text">Paste internal RAG support bot idea.</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-index">2</div>
+              <div class="flow-text">Mark missing evidence before implementation.</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-index">3</div>
+              <div class="flow-text">Turn uncertainty into reviewable next steps.</div>
+            </div>
+          </div>
+        </div>
+        <div class="caption">The workflow is not limited to competitions; it also evaluates internal AI product ideas.</div>
+      </section>
+
+      <section id="scene-6" class="clip scene s6" data-start="54.8" data-duration="11.7" data-track-index="6">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="AUDITABLE" style="left: 78px; top: 70px"></div>
+        <div class="scene-content">
+          <div class="workflow-copy">
+            <div class="kicker">Proof of usefulness</div>
+            <h2>Every decision leaves a trail.</h2>
+            <div class="code-card">
+              <div class="code-line"><span class="line-no">01</span><span>Markdown input with source lines</span></div>
+              <div class="code-line"><span class="line-no">02</span><span>Stable schema and structured JSON</span></div>
+              <div class="code-line"><span class="line-no">03</span><span>Saved run log for human review</span></div>
+              <div class="code-line"><span class="line-no">04</span><span>Evidence before build work</span></div>
+            </div>
+          </div>
+          <div class="image-frame" data-layout-allow-overflow>
+            <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <img src="assets/save-run-log.png" alt="Saved JSON and run log screen" />
+          </div>
+        </div>
+        <div class="caption">Every output keeps evidence lines and can be saved as JSON plus a run log.</div>
+      </section>
+
+      <section id="scene-7" class="clip scene s7" data-start="65.8" data-duration="9.2" data-track-index="7">
+        <div class="grain"></div>
+        <div class="ghost" data-layout-ignore data-label="DEFINE THE EVIDENCE" style="right: 72px; top: 72px"></div>
+        <div class="scene-content">
+          <div class="kicker">AI Opportunity Execution Harness</div>
+          <div class="cta-lockup">
+            <h2>Define the evidence before you build.</h2>
+            <p>Built for independent builders, small teams, and practical AI opportunities where usefulness matters more than demo theater.</p>
+          </div>
+          <div class="url-grid">
+            <div class="url-box">
+              <div class="label">Demo URL</div>
+              <div class="mono">To be replaced after deployment</div>
+            </div>
+            <div class="url-box">
+              <div class="label">GitHub URL</div>
+              <div class="mono">To be replaced after public push</div>
+            </div>
+          </div>
+        </div>
+        <div class="caption">AI Opportunity Execution Harness: define the evidence before you build.</div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      const sceneSchedule = [
+        [".s1", 0, 8.8],
+        [".s2", 8, 20.8],
+        [".s3", 20, 34],
+        [".s4", 33.5, 45.3],
+        [".s5", 44.8, 55.4],
+        [".s6", 54.8, 66.5],
+        [".s7", 65.8, 75],
+      ];
+
+      function enter(selector, fromVars, toVars, time) {
+        tl.fromTo(selector, fromVars, toVars, time);
+      }
+
+      sceneSchedule.forEach(([selector, start, end]) => {
+        tl.set(selector, { visibility: "visible" }, start);
+        tl.fromTo(selector, { opacity: 0, filter: "blur(18px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power2.out" }, start);
+        if (selector !== ".s7") {
+          tl.set(selector, { opacity: 0, visibility: "hidden" }, end);
+        }
+      });
+
+      enter(".s1 .kicker", { opacity: 0, x: -42 }, { opacity: 1, x: 0, duration: 0.36, ease: "power3.out" }, 0.18);
+      enter(".s1 h1", { opacity: 0, y: 76, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.72, ease: "expo.out" }, 0.34);
+      enter(".s1 .accent-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power4.out" }, 0.72);
+      enter(".s1 p", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.52, ease: "back.out(1.4)" }, 0.94);
+      enter(".s1 .panel", { opacity: 0, x: 84, rotation: 2 }, { opacity: 1, x: 0, rotation: 0, duration: 0.58, stagger: 0.14, ease: "power2.out" }, 0.54);
+      enter(".s1 .ghost", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 1.2, ease: "sine.out" }, 0.2);
+      tl.to(".s1 .orb", { scale: 1.06, duration: 2.1, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.3);
+
+      enter(".s2 .kicker", { opacity: 0, x: -36 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 8.16);
+      enter(".s2 h2", { opacity: 0, y: 64 }, { opacity: 1, y: 0, duration: 0.66, ease: "expo.out" }, 8.34);
+      enter(".s2 p", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.46, ease: "back.out(1.25)" }, 8.88);
+      enter(".s2 .rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power4.out" }, 9.28);
+      enter(".s2 .constraint", { opacity: 0, y: 58, rotation: -1 }, { opacity: 1, y: 0, rotation: 0, duration: 0.52, stagger: 0.1, ease: "power2.out" }, 8.6);
+      enter(".s2 .ghost", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 1.3, ease: "sine.out" }, 8.24);
+      tl.to(".s2 .orb", { x: 22, y: -18, duration: 2.4, yoyo: true, repeat: 4, ease: "sine.inOut" }, 8.2);
+
+      enter(".s3 .kicker", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 20.16);
+      enter(".s3 h2", { opacity: 0, y: 68 }, { opacity: 1, y: 0, duration: 0.68, ease: "expo.out" }, 20.34);
+      enter(".s3 .decision-card", { opacity: 0, x: -72, rotation: -1.2 }, { opacity: 1, x: 0, rotation: 0, duration: 0.58, ease: "back.out(1.2)" }, 20.78);
+      enter(".s3 .tag", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.08, ease: "power4.out" }, 21.08);
+      enter(".s3 .decision-item", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.34, stagger: 0.09, ease: "power2.out" }, 21.34);
+      enter(".s3 .image-frame", { opacity: 0, x: 96, rotation: 1.5 }, { opacity: 1, x: 0, rotation: 0, duration: 0.72, ease: "expo.out" }, 20.54);
+      tl.to(".s3 .image-frame img", { scale: 1.035, duration: 12.5, ease: "none" }, 20.54);
+
+      enter(".s4 .kicker", { opacity: 0, x: -38 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 33.66);
+      enter(".s4 h2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 33.86);
+      enter(".s4 p", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.42, ease: "back.out(1.25)" }, 34.35);
+      enter(".s4 .verdict:first-child", { opacity: 0, x: 72, rotation: 1.4 }, { opacity: 1, x: 0, rotation: 0, duration: 0.54, ease: "power2.out" }, 34.06);
+      enter(".s4 .verdict:last-child", { opacity: 0, x: 116, rotation: -1.6 }, { opacity: 1, x: 0, rotation: 0, duration: 0.66, ease: "back.out(1.2)" }, 34.44);
+      enter(".s4 .tag", { opacity: 0, scale: 0.82 }, { opacity: 1, scale: 1, duration: 0.28, stagger: 0.07, ease: "power4.out" }, 34.78);
+      enter(".s4 .ghost", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 1.0, ease: "sine.out" }, 33.7);
+
+      enter(".s5 .kicker", { opacity: 0, x: -38 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 44.96);
+      enter(".s5 h2", { opacity: 0, y: 64 }, { opacity: 1, y: 0, duration: 0.64, ease: "expo.out" }, 45.12);
+      enter(".s5 p", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.46, ease: "back.out(1.22)" }, 45.62);
+      enter(".s5 .flow-step", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.16, ease: "power2.out" }, 45.28);
+      enter(".s5 .flow-index", { scale: 0.55, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.4, stagger: 0.16, ease: "back.out(1.8)" }, 45.36);
+      tl.to(".s5 .orb", { scale: 0.94, x: -18, duration: 2, yoyo: true, repeat: 4, ease: "sine.inOut" }, 45.0);
+
+      enter(".s6 .kicker", { opacity: 0, x: -38 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 54.96);
+      enter(".s6 h2", { opacity: 0, y: 58 }, { opacity: 1, y: 0, duration: 0.62, ease: "expo.out" }, 55.12);
+      enter(".s6 .code-card", { opacity: 0, x: -70, rotation: -1.4 }, { opacity: 1, x: 0, rotation: 0, duration: 0.58, ease: "back.out(1.2)" }, 55.54);
+      enter(".s6 .code-line", { opacity: 0, x: -26 }, { opacity: 1, x: 0, duration: 0.32, stagger: 0.08, ease: "power2.out" }, 55.86);
+      enter(".s6 .image-frame", { opacity: 0, x: 94, rotation: 1.4 }, { opacity: 1, x: 0, rotation: 0, duration: 0.7, ease: "expo.out" }, 55.26);
+      tl.to(".s6 .image-frame img", { scale: 1.03, duration: 10.4, ease: "none" }, 55.26);
+
+      enter(".s7 .kicker", { opacity: 0, x: -38 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 65.98);
+      enter(".s7 h2", { opacity: 0, y: 68, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.76, ease: "expo.out" }, 66.18);
+      enter(".s7 p", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.2)" }, 66.78);
+      enter(".s7 .url-box", { opacity: 0, y: 54 }, { opacity: 1, y: 0, duration: 0.48, stagger: 0.13, ease: "power2.out" }, 67.22);
+      enter(".s7 .ghost", { opacity: 0, x: 48 }, { opacity: 1, x: 0, duration: 1.1, ease: "sine.out" }, 66.0);
+      tl.to(".s7 .scene-content", { opacity: 0, duration: 0.65, ease: "power1.in" }, 74.15);
+
+      enter(".s1 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 0.8);
+      enter(".s2 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 8.84);
+      enter(".s3 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 21.0);
+      enter(".s4 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 34.7);
+      enter(".s5 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 46.0);
+      enter(".s6 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 56.1);
+      enter(".s7 .caption", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 67.5);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
