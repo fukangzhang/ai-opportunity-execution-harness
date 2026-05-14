@@ -9,6 +9,19 @@
 - Cash Prizes：https://www.proofofusefulness.com/cash-prizes
 - FAQ：https://www.proofofusefulness.com/faq
 
+## 最终提交结果
+
+提交状态：已完成。  
+Report URL：https://www.proofofusefulness.com/reports/ai-opportunity-execution-harness  
+PoU Score：52  
+分数档位：You're In Business  
+报告生成日期：2026-05-14
+
+截图：  
+![PoU report score 52](screenshots/pou-report-score-52.png)
+
+官方报告给出的核心结论：项目解决了独立开发者评估 AI hackathon 和 bounty 的真实痛点，市场时机与概念效用较强；当前主要短板是 pre-launch 状态，没有真实用户、收入或第三方牵引证据。
+
 ## 这个比赛是什么
 
 Proof of Usefulness 是 HackerNoon 的技术与 AI hackathon。核心不是刷一个模型分数，而是证明项目真的有用：是否解决真实问题、是否有人使用、是否有公开证据、技术实现是否完整。
@@ -119,23 +132,29 @@ Its usefulness is practical and repeatable: it helps builders avoid wasting days
 截图：  
 ![Step 3 contact needed](screenshots/pou-submit-step3-contact-needed.png)
 
-当前停在这里，需要用户确认：
+最终处理：
 
 ```text
 Your Name:
-待用户确认
+用户确认后填写
 
 Work Email:
-待用户确认
+用户确认后填写，文档中不公开记录完整邮箱
 
 Referral Code:
-可留空，除非用户有邀请码
+留空
 
 I agree to receive Proof of Usefulness updates:
-页面默认勾选，待用户决定保留或取消
+最终保留勾选，因为官方前端校验要求勾选后才能提交
 ```
 
-这是最终提交前的个人信息步骤。填入姓名和邮箱后，`Submit Project` 按钮会变成可点；点击后会把项目信息和联系信息发送给比赛方，并生成 Proof of Usefulness report。
+补充发现：官方前端代码实际要求先发送并验证邮箱验证码，且必须同意接收 Proof of Usefulness updates 后才能提交。最初以为订阅是可取消的普通营销选项，但前端校验写明不勾选会阻止提交。
+
+提交完成后生成了报告：
+
+```text
+https://www.proofofusefulness.com/reports/ai-opportunity-execution-harness
+```
 
 ## 为什么刚才 Next 点不了
 
@@ -152,22 +171,21 @@ I agree to receive Proof of Usefulness updates:
 
 ## 提交后要做什么
 
-1. 等页面生成 Proof of Usefulness report。
-2. 记录 report URL、PoU Score 和分数档位。
-3. 到 Reports 页面搜索项目名，确认是否公开展示。
-4. 把 report URL 回填到 `submissions/submission-draft.md`。
-5. 写 HackerNoon 风格项目文章，带 `#proof-of-usefulness` 和相关技术标签，提高公开证据与 audience reach。
-6. 后续每次有新证据，例如 GitHub stars、使用者反馈、文章、更多样例，都更新项目并重新提升 PoU 证据。
+1. 写 HackerNoon 风格项目文章，带 `#proof-of-usefulness` 和相关技术标签。
+2. 把 live demo、GitHub repo、demo video 和本报告串成公开发布材料。
+3. 找 3-5 个真实用户试用，让他们给出一句反馈或 issue。
+4. 在 README / site 中增加“已有报告分数”和改进路线。
+5. 后续如果有 GitHub stars、用户反馈、文章发布、更多真实样例，再更新报告，提高 audience reach 和 evidence of traction。
 
-## 需要用户协作
+## 提分重点
 
-请确认最终提交联系人信息：
+当前分数低的主要原因不是产品方向错，而是证据太少：
 
-```text
-姓名：
-邮箱：
-是否保留 Proof of Usefulness updates 勾选：
-是否现在点击最终 Submit Project：
-```
-
-我建议最终点击前再口头确认一次，因为这一步会正式把项目提交给比赛方。
+| 报告维度 | 当前结果 | 下一步 |
+|---|---:|---|
+| Real World Utility | 20.0 | 保持，继续明确真实决策场景。 |
+| Audience Reach Impact | 2.0 | 发 HackerNoon 文章、README、社交渠道，积累访问和使用证据。 |
+| Technical Innovation | 9.0 | 增加 LLM 抽取模式和更多真实样例。 |
+| Evidence Of Traction | 1.25 | 收集 GitHub stars、issue、用户反馈、demo 使用记录。 |
+| Market Timing Relevance | 8.5 | 保持 AI agent / RAG / hackathon 决策定位。 |
+| Functional Completeness | 6.75 | 增加测试、README、公开教程和更新路径。 |

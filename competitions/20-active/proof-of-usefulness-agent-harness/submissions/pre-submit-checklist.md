@@ -34,13 +34,14 @@
 - [x] 确认部署平台：GitHub Pages。
 - [x] 确认旁白语言：英文。
 - [x] 使用合成旁白生成本地视频草版。
-- [ ] 最终提交前登录 Proof of Usefulness 提交页。
-- [ ] 确认 Step 3 联系人姓名和 work email。
-- [ ] 确认是否保留 Proof of Usefulness updates 勾选。
-- [ ] 最终确认后点击 `Submit Project`。
+- [x] 最终提交前登录 Proof of Usefulness 提交页。
+- [x] 确认 Step 3 联系人姓名和 work email。
+- [x] 确认 Proof of Usefulness updates 勾选规则：官方要求勾选后才能提交。
+- [x] 完成邮箱验证码验证并提交项目。
+- [x] 获取 PoU Report：`https://www.proofofusefulness.com/reports/ai-opportunity-execution-harness`。
 
 ## 当前推荐下一步
 
-1. 写 HackerNoon 风格项目说明。
-2. 如提交表单要求单独视频 URL，则上传 75 秒视频并拿到公开链接。
-3. 填写 Step 3 联系人信息并最终提交。
+1. 写 HackerNoon 风格项目说明，目标是提升公开证据和 audience reach。
+2. 收集 3-5 个真实用户反馈或 GitHub issue，补强 evidence of traction。
+3. 增加 LLM 抽取模式和更多真实样例后，再更新报告。

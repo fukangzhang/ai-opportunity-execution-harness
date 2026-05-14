@@ -18,10 +18,18 @@ https://github.com/fukangzhang/ai-opportunity-execution-harness
 
 ## Proof of Usefulness Submit Form Status
 
-- Step 1 Project Info: 已重新填写并截图。
-- Step 2 Technical Details: 已重新填写并截图；技术栈只勾选 `Other / Custom Stack`，因为当前版本没有实际集成 sponsor technologies。
-- Step 3 Contact & Submit: 当前停在联系人信息页，等待用户确认姓名、邮箱、是否接收更新，以及是否点击最终提交。
+- Step 1 Project Info: 已填写并提交。
+- Step 2 Technical Details: 已填写并提交；技术栈只勾选 `Other / Custom Stack`，因为当前版本没有实际集成 sponsor technologies。
+- Step 3 Contact & Submit: 已按用户确认的姓名和邮箱完成邮箱验证并提交。官方前端要求保留 Proof of Usefulness updates 勾选，否则无法提交。
 - 提交流程文档：`app/docs/POU_SUBMISSION_AND_RANKING_GUIDE.md`
+
+## Proof of Usefulness Report
+
+- Report URL: https://www.proofofusefulness.com/reports/ai-opportunity-execution-harness
+- PoU Score: 52
+- Score tier: You're In Business
+- Report date: 2026-05-14
+- 主要短板：pre-launch 项目缺少真实用户、收入、第三方反馈和公开牵引证据。
 
 ## Proof of Usefulness Evidence
 
