@@ -25,6 +25,8 @@
 - [ ] 准备部署配置，例如 Streamlit Community Cloud / Hugging Face Spaces / Render。
 - [x] 准备 GitHub Pages 静态 live demo 配置。
 - [ ] 准备 GitHub README 最终包装文案。
+- [x] 重新补齐 Proof of Usefulness submit Step 1/2，并保存 Step 1/2/3 截图。
+- [x] 新增提交与排名说明文档：`app/docs/POU_SUBMISSION_AND_RANKING_GUIDE.md`。
 
 ## 需要用户协作
 
@@ -33,9 +35,12 @@
 - [x] 确认旁白语言：英文。
 - [x] 使用合成旁白生成本地视频草版。
 - [ ] 最终提交前登录 Proof of Usefulness 提交页。
+- [ ] 确认 Step 3 联系人姓名和 work email。
+- [ ] 确认是否保留 Proof of Usefulness updates 勾选。
+- [ ] 最终确认后点击 `Submit Project`。
 
 ## 当前推荐下一步
 
 1. 写 HackerNoon 风格项目说明。
 2. 如提交表单要求单独视频 URL，则上传 75 秒视频并拿到公开链接。
-3. 登录提交页填写材料。
+3. 填写 Step 3 联系人信息并最终提交。

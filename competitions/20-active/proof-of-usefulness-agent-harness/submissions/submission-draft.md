@@ -16,6 +16,13 @@ https://fukangzhang.github.io/ai-opportunity-execution-harness/
 
 https://github.com/fukangzhang/ai-opportunity-execution-harness
 
+## Proof of Usefulness Submit Form Status
+
+- Step 1 Project Info: 已重新填写并截图。
+- Step 2 Technical Details: 已重新填写并截图；技术栈只勾选 `Other / Custom Stack`，因为当前版本没有实际集成 sponsor technologies。
+- Step 3 Contact & Submit: 当前停在联系人信息页，等待用户确认姓名、邮箱、是否接收更新，以及是否点击最终提交。
+- 提交流程文档：`app/docs/POU_SUBMISSION_AND_RANKING_GUIDE.md`
+
 ## Proof of Usefulness Evidence
 
 - 使用真实比赛和 AI idea 样例作为输入。
