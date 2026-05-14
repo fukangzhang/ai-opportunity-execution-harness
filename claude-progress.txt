@@ -1,0 +1,10 @@
+[2026-05-14] Initialized AI competition research harness. Added source-backed research, matrix, direction radar, action plan, and completion audit.
+[2026-05-14] Started Harness-style directory upgrade based on user reference: guides, lifecycle folders, templates, eligibility policy, active execution plan.
+[2026-05-14] Browser-checked eligibility for key targets. Student-only contests are no longer treated as official primary targets for a working professional; they remain reference/mentor-only unless rules allow otherwise.
+[2026-05-14] Added open-target shortlist prioritizing professional-friendly and fast-iteration contests.
+[2026-05-14] Added Windows/PowerShell 7 environment rules, GitHub branch/PR workflow, and quality/test strategy to prevent wrong-direction iteration.
+[2026-05-14] 按“尽量全中文文档、注释中文”的要求，中文化 Harness 文档、模板、目录说明、PR 模板和脚本输出。
+[2026-05-14] 清理根目录：将方向雷达、来源索引、行动清单、完成度审计移动到 docs 下，根目录只保留入口、规则、数据源和配置。
+[2026-05-14] 收紧资格规则：我们按从业人员身份参赛，学生限定比赛直接排除；已从矩阵、短名单、来源和行动清单中移除相关学生限定比赛内容。
+[2026-05-14] 盘点当前仓库状态：调研/索引/规则/校验脚本基本完成，尚未确定第一个 active 比赛，生命周期目录仍未落具体比赛工作区；发现 CSV 缺少显式资格字段、校验脚本未校验资格枚举。
+[2026-05-14] 初始化 Git 仓库；为比赛矩阵补充显式 eligibility 字段并加强校验；创建 Agent Academy Hackathon 与 Kaggle F1 Pit Stops 两个 active 工作区，准备后续用独立 worktree 并行推进。

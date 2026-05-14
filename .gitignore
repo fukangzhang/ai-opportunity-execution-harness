@@ -1,0 +1,20 @@
+# Python 相关
+__pycache__/
+.venv/
+venv/
+
+# Node 相关
+node_modules/
+dist/
+build/
+
+# 本地产物
+.env
+.env.*
+*.log
+
+# 比赛输出
+**/data/raw/
+**/data/cache/
+**/outputs/
+**/submissions/tmp/
