@@ -14,6 +14,7 @@
 | `fix/<short-name>` | 修正数据、脚本、文档或流程问题 |
 | `docs/<short-name>` | 纯文档修改 |
 | `research/<competition-or-platform>` | 来源调研或比赛分流 |
+| `competition/<platform>-<slug>` | 已进入 active 的具体比赛推进 |
 | `chore/<short-name>` | 维护、格式、配置 |
 
 示例：
@@ -21,6 +22,7 @@
 ```plain
 feat/agent-academy-workspace
 research/iflytek-2026-tracks
+competition/agent-academy-hackathon
 fix/eligibility-labels
 docs/harness-rules
 ```
@@ -28,6 +30,32 @@ docs/harness-rules
 ## 多比赛并行
 
 多个比赛同时推进时，默认使用 `git worktree` 给每个比赛分配独立工作目录，避免两个 Codex 对话框在同一个目录里切换分支。
+
+### 这是什么
+
+`git worktree` 不是复制出多个独立仓库，而是让同一个 Git 仓库的不同分支同时出现在不同文件夹里。
+
+当前关系：
+
+```plain
+D:\project\ai-competition-research
+  main 分支，主线和稳定总账
+
+D:\project\ai-competition-research-agent-academy
+  competition/agent-academy-hackathon 分支，Agent 比赛施工现场
+
+D:\project\ai-competition-research-f1-pit-stops
+  competition/kaggle-f1-pit-stops 分支，F1 比赛施工现场
+```
+
+这些目录看起来都有 `.git`，但不是三份互不相关的仓库。主目录保存真正的 Git 对象库；worktree 目录里的 `.git` 通常只是一个很小的指针文件，指向主仓库 `.git/worktrees/...` 中对应分支的管理信息。
+
+### 为什么这样做
+
+- 两个 Codex 对话框可以分别打开不同目录，各自在自己的分支工作。
+- 不需要在同一个目录里反复 `git checkout`，避免一个对话框切分支影响另一个对话框。
+- PR 仍然是普通 PR：比赛分支请求合并到 `main`。
+- 合并完成后，额外 worktree 只是临时工作目录，可以安全移除。
 
 推荐对应关系：
 
@@ -43,6 +71,61 @@ docs/harness-rules
 - `competition_matrix.csv`、`docs/registry/competition-index.md`、脚本和模板属于共享区，只有确实需要更新全局状态时才改。
 - 两个分支都需要更新共享区时，先在主仓库做协调提交，再让各 worktree rebase 或 merge。
 - PR 尽量一赛一 PR；不要把两个比赛的实验代码混在同一个 PR。
+
+### 自动创建新比赛工作区
+
+进入 active 的新比赛，优先使用脚本创建分支和 worktree：
+
+```powershell
+pwsh scripts/new-competition-worktree.ps1 `
+  -Slug <platform-competition-slug> `
+  -CreateActiveDirectory
+```
+
+默认会创建：
+
+- 分支：`competition/<platform-competition-slug>`
+- 工作目录：`D:\project\ai-competition-research-<platform-competition-slug>`
+- 比赛目录：`competitions/20-active/<platform-competition-slug>/`
+
+也可以显式指定：
+
+```powershell
+pwsh scripts/new-competition-worktree.ps1 `
+  -Slug agent-academy-hackathon `
+  -Branch competition/agent-academy-hackathon `
+  -WorktreePath D:\project\ai-competition-research-agent-academy `
+  -CompetitionPath competitions/20-active/microsoft-agent-academy-hackathon `
+  -CreateActiveDirectory
+```
+
+### 合回主线
+
+比赛线开发完成后，在对应 worktree 中提交并推送：
+
+```powershell
+git add .
+git commit -m "feat: add <competition> baseline"
+git push -u origin competition/<platform-competition-slug>
+gh pr create --base main --head competition/<platform-competition-slug>
+```
+
+PR 合并后，比赛成果进入 `main`。`main` 是最终稳定版本，worktree 只是临时施工现场。
+
+### 清理工作区
+
+确认 PR 已合并、没有未提交改动后，在主仓库运行：
+
+```powershell
+git worktree remove ..\ai-competition-research-<platform-competition-slug>
+git branch -d competition/<platform-competition-slug>
+```
+
+如果远端分支也已合并且不再需要，可以删除远端分支：
+
+```powershell
+git push origin --delete competition/<platform-competition-slug>
+```
 
 ## 提交信息
 

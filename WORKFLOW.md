@@ -18,6 +18,14 @@
 | `80-rejected` | 不适合，保留排除原因 |
 | `90-archived` | 已完成、已过期、已提交或已中止 |
 
+比赛进入 `20-active` 时，应同步创建独立 Git 分支和 worktree。推荐使用：
+
+```powershell
+pwsh scripts/new-competition-worktree.ps1 -Slug <platform-competition-slug> -CreateActiveDirectory
+```
+
+每个 active 比赛对应一个 worktree。后续 Codex 对话框只打开自己的 worktree，避免并行比赛互相切换分支或修改同一批文件。
+
 ## 立项门槛
 
 比赛进入 `20-active` 前，必须满足：

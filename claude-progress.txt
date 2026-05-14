@@ -8,3 +8,4 @@
 [2026-05-14] 收紧资格规则：我们按从业人员身份参赛，学生限定比赛直接排除；已从矩阵、短名单、来源和行动清单中移除相关学生限定比赛内容。
 [2026-05-14] 盘点当前仓库状态：调研/索引/规则/校验脚本基本完成，尚未确定第一个 active 比赛，生命周期目录仍未落具体比赛工作区；发现 CSV 缺少显式资格字段、校验脚本未校验资格枚举。
 [2026-05-14] 初始化 Git 仓库；为比赛矩阵补充显式 eligibility 字段并加强校验；创建 Agent Academy Hackathon 与 Kaggle F1 Pit Stops 两个 active 工作区，准备后续用独立 worktree 并行推进。
+[2026-05-14] 将多比赛并行的 Git worktree 规则写入工作流，并新增 scripts/new-competition-worktree.ps1，用于后续自动创建比赛分支、worktree 和 active 目录骨架。
